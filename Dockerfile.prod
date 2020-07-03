@@ -1,0 +1,27 @@
+FROM node:10.16-alpine as client
+
+WORKDIR /usr/app/client/
+
+COPY client/package*.json ./
+
+RUN yarn install
+
+COPY client/ ./
+
+RUN yarn build
+
+FROM node:10.16-alpine
+
+WORKDIR /usr/sr/app/
+COPY --from=client /uar/app/client/build/ ./client/build/
+
+WORKDIR /usr/src/app/server/
+COPY server/package*.json ./
+RUN npm intsall -qy
+COPY server/ ./
+
+ENV PORT 8080
+
+EXPOSE 8080
+
+CMD ["npm", "start"]

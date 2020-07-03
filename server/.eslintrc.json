@@ -1,0 +1,9 @@
+{
+  "extends": ["airbnb", "prettier", "plugin:import/errors", "plugin:import/warnings"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "import/order": ["error", { "newlines-between": "always" }],
+    "no-underscore-dangle": "off"
+  }
+}
