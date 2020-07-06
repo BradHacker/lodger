@@ -10,6 +10,7 @@ const bcrypt = require('bcrypt-nodejs');
 
 const { User } = require('./src/models/user.model');
 const { userRouter } = require('./src/routes/user.router');
+const { hotelRouter } = require('./src/routes/hotel.router');
 
 const app = express();
 const PORT = 8080;
@@ -51,6 +52,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/hotels', hotelRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`); // eslint-disable-line no-console
